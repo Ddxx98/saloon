@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard | Salon App</title>
+    <link rel="stylesheet" href="./css/staff.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Staff Dashboard</h1>
+        <p>Manage your availability, specializations, and appointments here.</p>
+    </header>
+
+    <div class="dashboard-container">
+        <section id="appointments-section" class="dashboard-section">
+            <h2>Scheduled Appointments</h2>
+            <ul id="appointments-list">
+                <li>No appointments scheduled yet.</li>
+            </ul>
+        </section>
+
+        <section id="preferences-section" class="dashboard-section">
+            <h2>Manage Availability and Specializations</h2>
+
+            <form id="preferences-form">
+                <div class="form-group">
+                    <label for="specializations-dropdown">Specialization</label>
+                    <select id="specializations-dropdown">
+                        <option value="">Select a specialization</option>
+                    </select>
+                </div>
+                <div class="form-group time-input">
+                    <label for="start-time">Start Time</label>
+                    <input type="time" id="start-time">
+                </div>
+                <div class="form-group time-input">
+                    <label for="end-time">End Time</label>
+                    <input type="time" id="end-time">
+                </div>
+                <button type="button" id="save-preferences">Add</button>
+            </form>
+
+            <h3>Current Availability and Specializations</h3>
+            <ul id="preferences-list">
+                <li>No availability or specializations added yet.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="./js/staff.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" referrerpolicy="no-referrer"></script>
+</body>
+</html>

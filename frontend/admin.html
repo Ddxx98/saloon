@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Salon App</title>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p>Manage staff services and customer appointments.</p>
+    </header>
+
+    <div class="dashboard-container">
+        <section id="assign-services-section" class="dashboard-section">
+            <h2>Assign Services to Staff</h2>
+            <div id="staff-services-container">
+                <table id="staff-services-table">
+                    <thead>
+                        <tr>
+                            <th>Staff Name</th>
+                            <th>Service Name</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Duration</th>
+                            <th>Set Price (₹)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">Loading staff and services...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="all-staff-services-section" class="dashboard-section">
+            <h2>All Assigned Staff Services</h2>
+            <div id="all-staff-services-container">
+                <table id="all-staff-services-table">
+                    <thead>
+                        <tr>
+                            <th>Staff Name</th>
+                            <th>Service Name</th>
+                            <th>Duration</th>
+                            <th>Price (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4">Loading assigned services...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="customer-appointments-section" class="dashboard-section">
+            <h2>Customer Appointments</h2>
+            <table id="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5">Loading customer appointments...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" referrerpolicy="no-referrer"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>
