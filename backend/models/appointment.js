@@ -33,6 +33,14 @@ const Appointment = sequelize.define('appointment', {
     status: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    review: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    },
+    duration: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

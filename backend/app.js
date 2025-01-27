@@ -10,6 +10,9 @@ const loginRoutes = require('./routes/login')
 const appointmentRoutes = require('./routes/appointment')
 const serviceRoutes = require('./routes/service')
 const staffRoutes = require('./routes/staff')
+const payRoutes = require('./routes/pay')
+const reviewRoutes = require('./routes/review')
+const cron = require('./controllers/cron')
 
 const User = require('./models/user')
 const Staff = require('./models/staff')
@@ -40,9 +43,13 @@ app.use('/login', loginRoutes)
 app.use('/appointments', appointmentRoutes)
 app.use('/service', serviceRoutes)
 app.use('/staff', staffRoutes)
+app.use('/pay', payRoutes)
+app.use('/review', reviewRoutes)
 
-User.hasMany(Appointment);
-Appointment.belongsTo(User);
+cron();
+
+User.hasMany(Appointment, { foreignKey: "userId" });
+Appointment.belongsTo(User, { foreignKey: "userId" });
 
 User.hasMany(Review);
 Review.belongsTo(User);

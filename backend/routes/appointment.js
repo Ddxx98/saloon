@@ -9,6 +9,10 @@ router.post('/', authMiddleware.userAuthenticate , appointmentController.createA
 
 router.get('/', authMiddleware.userAuthenticate , appointmentController.getAllAppointments);
 
+router.delete('/:id', authMiddleware.userAuthenticate , appointmentController.deleteAppointment);
+
+router.put('/:id', authMiddleware.userAuthenticate , appointmentController.updateAppointment);
+
 router.get('/user/:userId', authMiddleware.userAuthenticate , appointmentController.getAppointmentsByUserId);
 
 router.get('/staff/:staffId', authMiddleware.userAuthenticate , appointmentController.getAppointmentsByStaffId);

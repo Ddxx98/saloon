@@ -5,16 +5,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     const staffServicesTable = document.querySelector("#staff-services-table tbody");
     const allStaffServicesTable = document.querySelector("#all-staff-services-table tbody");
     const appointmentsList = document.querySelector("#appointments-table tbody");
+    const reviewsTableBody = document.querySelector("#reviews-table tbody");
 
     async function fetchStaffAndServices() {
-        const staffResponse = await axios.get(`${url}/staff`, { headers: { Authorization: `${token}` } });
-        const staff = staffResponse.data.staffs;
-        return staff;
+        try {
+            const staffResponse = await axios.get(`${url}/staff`, { headers: { Authorization: `${token}` } });
+            const staff = staffResponse.data.staffs;
+            return staff;
+        } catch (err) {
+            if (err.response.status === 401) {
+                window.location.href = "./login.html";
+            }
+            console.log(err);
+        }
     }
 
     async function fetchAllAssignedServices() {
-        const response = await axios.get(`${url}/service`, { headers: { Authorization: `${token}` } });
-        return response.data.services;
+        try {
+            const response = await axios.get(`${url}/service`, { headers: { Authorization: `${token}` } });
+            return response.data.services;
+        } catch (err) {
+            if (err.response.status === 401) {
+                window.location.href = "./login.html";
+            }
+            console.log(err);
+        }
+
     }
 
     async function renderStaffServices() {
@@ -67,6 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 alert("Service assigned successfully!");
 
                 renderAllAssignedServices();
+                renderStaffServices();
             });
         });
     }
@@ -84,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <tr>
                     <td>${service.username}</td>
                     <td>${service.name}</td>
-                    <td>${service.duration} mins</td>
+                    <td>${service.duration} hour</td>
                     <td>₹${service.price}</td>
                 </tr>
             `
@@ -93,29 +110,65 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     async function renderAppointments() {
-        const response = await axios.get(`${url}/appointments`, { headers: { Authorization: `${token}` } });
-        const appointments = response.data.appointments;
+        try {
+            const response = await axios.get(`${url}/appointments`, { headers: { Authorization: `${token}` } });
+            const appointments = response.data.appointments;
 
-        if (appointments.length === 0) {
-            appointmentsList.innerHTML = '<p>No appointments scheduled yet.</p>';
-            return;
-        }
+            if (appointments.length === 0) {
+                appointmentsList.innerHTML = '<p>No appointments scheduled yet.</p>';
+                return;
+            }
 
-        appointmentsList.innerHTML = appointments
-            .map((appointment) => `
+            appointmentsList.innerHTML = appointments
+                .map((appointment) => `
                 <tr>
                     <td>${appointment.customer}</td>
                     <td>${appointment.serviceName}</td>
-                    <td>${appointment.date}</td>
+                    <td>${new Date(appointment.date).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</td>
                     <td>${appointment.time}</td>
                     <td>${appointment.status}</td>
                 </tr>
             `)
-            .join("");
+                .join("");
+        } catch (err) {
+            if (err.response.status === 401) {
+                window.location.href = "./login.html";
+            }
+            console.log(err);
+        }
+    }
+
+    async function renderReviews() {
+        try {
+            const response = await axios.get(`${url}/review`, { headers: { Authorization: `${token}` } });
+            const reviews = response.data;
+    
+            reviewsTableBody.innerHTML = "";
+    
+            if (reviews.length === 0) {
+                reviewsTableBody.innerHTML = `<tr><td colspan="4">No reviews available.</td></tr>`;
+            } else {
+                reviews.forEach((review) => {
+                    const row = `
+                        <tr>
+                            <td>${review.userId}</td>
+                            <td>${review.review}</td>
+                            <td>${review.rating} / 5</td>
+                            <td>${new Date(review.createdAt).toLocaleDateString()}</td>
+                        </tr>
+                    `;
+                    reviewsTableBody.innerHTML += row;
+                });
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+            reviewsTableBody.innerHTML = `<tr><td colspan="4">Failed to load reviews.</td></tr>`;
+        }
     }
 
 
     await renderStaffServices();
     await renderAllAssignedServices();
     await renderAppointments();
+    await renderReviews();
 });

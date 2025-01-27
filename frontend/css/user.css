@@ -174,3 +174,265 @@ button:hover {
         font-size: 0.9rem;
     }
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; 
+}
+
+.popup.show {
+    display: flex; 
+}
+
+.popup-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: popupFadeIn 0.3s ease-out;
+    position: relative;
+}
+
+.popup-content .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.popup-content .close-popup:hover {
+    color: #2575fc;
+}
+
+.popup-content h2 {
+    margin: 0 0 15px;
+    font-size: 1.8rem;
+    color: #2575fc;
+    font-weight: bold;
+}
+
+.popup-content textarea {
+    width: 80%;
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    resize: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.popup-content textarea:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+.popup-content button {
+    background-color: #2575fc;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.popup-content button:hover {
+    background-color: #1e63d9;
+    transform: translateY(-2px);
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 20px;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content button {
+        font-size: 0.9rem;
+    }
+}
+
+.rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.star {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+    color: #ffca28; 
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+}
+
+th, 
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #f0f0f0;
+}
+
+th {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9fb;
+}
+
+tbody tr:hover {
+    background: rgba(37, 117, 252, 0.1);
+}
+
+button {
+    background-color: #2575fc;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e63d9;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #ddd;
+    color: #999;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    table th,
+    table td {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    button {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+/* Action Section Styling */
+#appointments-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#appointments-table td button {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px; /* Adds spacing between buttons */
+    transition: background-color 0.3s ease;
+}
+
+#appointments-table td button:hover {
+    background-color: #0056b3;
+}
+
+/* Specific button styles */
+#appointments-table td button.review-btn {
+    background-color: #28a745; /* Green for Write Review */
+}
+
+#appointments-table td button.review-btn:hover {
+    background-color: #218838;
+}
+
+#appointments-table td button.edit-btn {
+    background-color: #ffc107; 
+    color: #212529; 
+}
+
+#appointments-table td button.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+#appointments-table td button.cancel-btn {
+    background-color: #dc3545;
+}
+
+#appointments-table td button.cancel-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Buttons */
+@media (max-width: 768px) {
+    #appointments-table td button {
+        width: 100%; /* Buttons stack in a column on smaller screens */
+        margin: 5px 0;
+    }
+}

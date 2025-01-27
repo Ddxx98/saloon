@@ -22,7 +22,7 @@ function renderAppointments(appointments) {
     appointments.forEach(appointment => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <strong>Date:</strong> ${appointment.date} <br>
+            <strong>Date:</strong> ${new Date(appointment.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })} <br>
             <strong>Time:</strong> ${appointment.time} <br>
             <strong>Service:</strong> ${appointment.serviceName} <br>
             <strong>Customer:</strong> ${appointment.customer}
@@ -73,6 +73,9 @@ savePreferencesButton.addEventListener('click', async () => {
         const response = await axios.post(`${url}/staff`, { specialization: selectedSpecialization, start_time: startTime, end_time: endTime },
             { headers: { Authorization: `${token}` } });
     } catch (err) {
+        if(err.response.status === 401) {
+            window.location.href = "./login.html";
+        }
         console.log(err);
     }
 
@@ -90,6 +93,9 @@ async function loadAppointments() {
         }
         renderAppointments(response.data.appointments);
     } catch (err) {
+        if(err.response.status === 401) {
+            window.location.href = "./login.html";
+        }
         console.log(err);
     }
 }

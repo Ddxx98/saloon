@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Salon App</title>
     <link rel="stylesheet" href="./css/admin.css">
 </head>
+
 <body>
     <header class="dashboard-header">
         <h1>Admin Dashboard</h1>
@@ -77,9 +79,29 @@
                 </tbody>
             </table>
         </section>
+
+        <section id="customer-reviews-section" class="dashboard-section">
+            <h2>Customer Reviews</h2>
+            <table id="reviews-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Review</th>
+                        <th>Rating</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">Loading customer reviews...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" referrerpolicy="no-referrer"></script>
     <script src="./js/admin.js"></script>
 </body>
+
 </html>

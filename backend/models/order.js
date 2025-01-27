@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const Review = sequelize.define('review', {
+const Order = sequelize.define('order', {
     userId: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -10,18 +10,30 @@ const Review = sequelize.define('review', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    appointmentId: {
+    orderId: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    serviceId: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    rating: {
-        type: Sequelize.INTEGER,
+    serviceName: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    review: {
+    date: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    time: {
+        type: Sequelize.TIME,
+        allowNull: false
+    },
+    status: {
         type: Sequelize.STRING,
         allowNull: false
     }
 });
 
-module.exports = Review;
+module.exports = Order;
