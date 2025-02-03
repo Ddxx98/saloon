@@ -12,7 +12,6 @@ apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
 exports.createAppointment = async (req, res) => {
     const userId = req.user.id;
     const customer = req.user.name;
-    const now = new Date();
     const { staffId, serviceId, date, time, status, service, duration } = req.body;
     const endTime = Number(time.split(":")[0]) + 2 + ":" + time.split(":")[1];
     console.log(endTime);

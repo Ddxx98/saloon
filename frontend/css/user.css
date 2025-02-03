@@ -301,7 +301,7 @@ button:hover {
 
 .star.selected,
 .star:hover,
-.star:hover ~ .star {
+.star:hover  .star {
     color: #ffca28; 
 }
 
@@ -380,7 +380,7 @@ button:disabled {
         padding: 6px 10px;
     }
 }
-/* Action Section Styling */
+
 #appointments-table td {
     text-align: center;
     vertical-align: middle;
@@ -395,7 +395,7 @@ button:disabled {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 5px; /* Adds spacing between buttons */
+    margin: 5px; 
     transition: background-color 0.3s ease;
 }
 
@@ -403,9 +403,8 @@ button:disabled {
     background-color: #0056b3;
 }
 
-/* Specific button styles */
 #appointments-table td button.review-btn {
-    background-color: #28a745; /* Green for Write Review */
+    background-color: #28a745; 
 }
 
 #appointments-table td button.review-btn:hover {
@@ -429,10 +428,101 @@ button:disabled {
     background-color: #c82333;
 }
 
-/* Responsive Buttons */
 @media (max-width: 768px) {
     #appointments-table td button {
-        width: 100%; /* Buttons stack in a column on smaller screens */
+        width: 100%; 
         margin: 5px 0;
+    }
+}
+
+#search-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#filtered-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#filtered-services-list li {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+#filtered-services-list li p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#filtered-services-list .book-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+#filtered-services-list .book-btn:hover {
+    background: #0056b3;
+}
+
+@media (min-width: 768px) {
+    #filtered-services-list li {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #filtered-services-list li p {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    #filtered-services-list .book-btn {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    #search-box {
+        font-size: 18px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    #filtered-services-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtered-services-list li p {
+        font-size: 14px;
+    }
+
+    #filtered-services-list .book-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    #search-box {
+        font-size: 16px;
+        padding: 10px;
     }
 }

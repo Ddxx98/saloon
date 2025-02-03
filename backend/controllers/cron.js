@@ -142,7 +142,6 @@ const sendAppointmentReminders = async (reminderType) => {
                                     <p><strong>Service:</strong> ${appointment.serviceName}</p>
                                     <p><strong>Date:</strong> ${new Date(appointment.date).toLocaleDateString()}</p>
                                     <p><strong>Time:</strong> ${appointment.time}</p>
-                                    <p><strong>Staff:</strong> ${appointment.staffName || "Not Assigned"}</p>
                                 </div>
                                 <p>If you need to reschedule or have any questions, please feel free to contact us.</p>
                                 <p>We look forward to serving you!</p>
